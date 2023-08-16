@@ -1,50 +1,66 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * is_palindrome - checks if a list is palindrome
- * @head: pointer to head of a linked list
- * Return: returns 1, if the list has 1 element or is empty
+ * reverse_listint - reverses the linked list
+ * @head: double pointer to the first node of the linked list
+ * Return: returns pointer to head of the linked list after reversal
  */
+listint_t *reverse_listint(listint_t **head)
+{
+	listint_t *node = *head, *next, *prev = NULL;
 
+	while (node)
+	{
+		next = node->next;
+		node->next = prev;
+		prev = node;
+		node = next;
+	}
+
+	*head = prev;
+	return (*head);
+}
+/**
+ * is_palindrome - checks if a singly linked is a palindrome
+ * @head: pointer to head of linked list
+ * Return: returns 1 if is a palindrome, 0 if not
+ */
 int is_palindrome(listint_t **head)
 {
+	listint_t *tmp, *rev, *mid;
+	size_t size = 0, i;
+
 	if (*head == NULL || (*head)->next == NULL)
-	{
 		return (1);
-	}
-	listint_t *slow = *head;
-	listint_t *fast = *head;
 
-	while (fast->next != NULL && fast->next->next != NULL)
+	tmp = *head;
+	while (tmp)
 	{
-		slow = slow->next;
-		fast = fast->next->next;
+		size++;
+		tmp = tmp->next;
 	}
-	listint_t *prev = NULL;
-	listint_t *current = slow->next;
-	listint_t *next_node;
 
-	while (current != NULL)
-	{
-		next_node = current->next;
-		current->next = prev;
-		prev = current;
-		current = next_node;
-	}
-	listint_t *second_half = prev;
-	listint_t *first_half = *head;
+	tmp = *head;
+	for (i = 0; i < (size / 2) - 1; i++)
+		tmp = tmp->next;
 
-	while (second_half != NULL)
+	if ((size % 2) == 0 && tmp->n != tmp->next->n)
+		return (0);
+
+	tmp = tmp->next->next;
+	rev = reverse_listint(&tmp);
+	mid = rev;
+
+	tmp = *head;
+	while (rev)
 	{
-		if (first_half->n != second_half->n)
-		{
+		if (tmp->n != rev->n)
 			return (0);
-		}
-		first_half = first_half->next;
-		second_half = second_half->next;
+		tmp = tmp->next;
+		rev = rev->next;
 	}
+	reverse_listint(&mid);
 
 	return (1);
 }
+
