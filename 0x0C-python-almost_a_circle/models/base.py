@@ -1,18 +1,20 @@
 #!/usr/bin/python3
-"""
-models/__init__.py (empty file)
-models/base.py
-"""
+"""Class is base"""
+
+
 class Base:
-    """Private class attribute"""
-    __nb_objects = 0
-    """Class constructor"""
+    """
+    Represents a class Base which will act as a base class for
+    other subclass
+    """
+    
+    __nb_objects = 0 # private class attribute
 
     def __init__(self, id=None):
-        """If id is provided assign it to the public instance attribute"""
+        # If id is provided assign it to the public instance attribute
         if id is not None:
             self.id = id
         else:
-            """increment __nb_objects and assign the new value to the public instance attribute id"""
-            self.__class__.__nb_objects += 1
-            self.id = self.__class__.__nb_objects
+            # increment __nb_objects and assign the new value to the public instance attribute id
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
