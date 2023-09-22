@@ -21,6 +21,7 @@ class Square(Rectangle):
     def __str__(self):
         """String method for the square class"""
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+
     def update(self, *args, **kwargs):
         """To assign args and keyword arguments to values"""
         if args:
@@ -41,3 +42,12 @@ class Square(Rectangle):
                 self.x = kwargs['x']
             if 'y' in kwargs:
                 self.y = kwargs['y']
+
+    def to_dictionary(self):
+        """Dictionary method for square class"""
+        return {
+                'id': self.id,
+                'size': self.size,
+                'x': self.x,
+                'y': self.y
+                }
