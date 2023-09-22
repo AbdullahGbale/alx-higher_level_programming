@@ -4,7 +4,7 @@ import json
 
 
 class Base:
-    """Base class for data manipulation and represenation"""
+    """Base class for data manipulation and representation"""
     
     __nb_objects = 0
 
@@ -17,7 +17,8 @@ class Base:
     
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Convert a list of dictionaries into JSON string representation.
+        """
+        Convert a list of dictionaries into JSON string representation.
         
         Args:
             list_dictionaries(list): A list of dictionaries to be converted.
