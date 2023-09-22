@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Class is base"""
+import json
 
 
 class Base:
@@ -18,8 +19,10 @@ class Base:
             # increment __nb_objects and assign the new value to the public instance attribute id
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-
+    
+    @staticmethod
     def to_json_string(list_dictionaries):
+        """Returning json method representation of list dictionaries"""
         if list_dictionaries is None or not list_dictionaries:
             return "[]"
         else:
