@@ -9,20 +9,18 @@ class Base:
     other subclass
     """
     
-    __nb_objects = 0 # private class attribute
+    __nb_objects = 0
 
     def __init__(self, id=None):
-        # If id is provided assign it to the public instance attribute
         if id is not None:
             self.id = id
         else:
-            # increment __nb_objects and assign the new value to the public instance attribute id
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
     
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Returning json method representation of list dictionaries"""
+        """Implementing the json method"""
         if list_dictionaries is None or not list_dictionaries:
             return "[]"
         else:
