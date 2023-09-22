@@ -18,3 +18,10 @@ class Base:
             # increment __nb_objects and assign the new value to the public instance attribute id
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    def to_json_string(list_dictionaries):
+        if list_dictionaries is None or not list_dictionaries:
+            return "[]"
+        else:
+            json_string = json.dumps(list_dictionaries)
+        return json_string
