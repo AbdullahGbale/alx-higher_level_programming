@@ -27,10 +27,10 @@ class Base:
 
         If list_dictionaries is None or empty, it returns "[]".
         """
-        if list_dictionaries is None or not list_dictionaries:
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
-        else:
-            json_string = json.dumps(list_dictionaries)
+
+        json_string = json.dumps(list_dictionaries)
         return json_string
 
      @classmethod
