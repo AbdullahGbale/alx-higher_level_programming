@@ -5,7 +5,7 @@ import json
 
 class Base:
     """Base class for data manipulation and representation"""
-    
+
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -14,12 +14,12 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-    
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """
         Convert a list of dictionaries into JSON string representation.
-        
+
         Args:
             list_dictionaries(list): A list of dictionaries to be converted.
 
@@ -49,7 +49,7 @@ class Base:
             list_objs = []
 
             filename = cls.__name__ + ".json"
-            
+
             list_dictionaries = [obj.to_dictionary() for obj in list_objs]
             json_string = cls.to_json_string(list_dictionaries)
 
