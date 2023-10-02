@@ -1,23 +1,14 @@
 #!/usr/bin/python3
-"""Module: Locked class"""
+"""Defines a class  'Locked class'"""
+
+
 class LockedClass:
     """
-    Class: LockedClass
+    Class with no class or object attribute, that prevents the user
+    from dynamically creating attributes except if the new attribute is
+    called 'first_name'
     """
-    def __setattr__(self, name, value):
-         """
-        Set instance attribute 'name' to 'value' if 'name' is 'first_name'.
-        Raise an AttributeError for any other attribute.
+    __slots__ = ["first_name"]
 
-        Args:
-            name (str): The name of the attribute being set.
-            value: The value to set the attribute to.
-
-        Raises:
-            AttributeError: If 'name' is not 'first_name'.
-        """
-        if name == "first_name":
-            self.__dict__[name] = value
-
-        else:
-            raise AttributeError(f"can not set attribute '{name}'")
+    def __init__(self):
+        self.first_name = None
