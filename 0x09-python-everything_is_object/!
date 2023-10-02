@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+"""Module: locked_class"""
+
+
+class LockedClass:
+    """A class that prevents the user from dynamically creating new instance attributes,
+    except if the new instance attribute is called first_name.
+
+    Attributes:
+        None
+
+    Methods:
+        __setattr__(self, name, value): Controls the creation of instance attributes.
+    """
+    def __setattr__(self, name, value):
+        if name == "first_name":
+            self.__dict__[name] = value
+
+        else:
+            raise AttributeError(f"can not set attribute '{name}'")
