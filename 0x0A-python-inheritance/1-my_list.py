@@ -1,5 +1,5 @@
 #!/usr/bin/python3
- """Defines inherited list class MyList."""
+"""Defines inherited list class MyList."""
 
 
 class MyList(list):
